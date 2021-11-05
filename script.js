@@ -18,17 +18,33 @@ function playRound() {
     playerSelection = userPlay();
     computerSelection = computerPlay();
     if (playerSelection === computerSelection) {
-        return "It's a tie!";
+        return 'tie';
     } else if ((playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'scissors' && computerSelection === 'paper')) {
-        return "You win, " + playerSelection + " beats " + computerSelection + "!";
+        return 'win';
     } else {
-        return "You lose, " + computerSelection + " beats " + playerSelection + ".";
+        return 'lose';
     }
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
-        console.log(playRound());
+    let playerScore = 0;
+    let computerScore = 0;
+    while (playerScore < 3 && computerScore < 3) {
+        let result = playRound();
+        if (result === 'tie') {
+            console.log("It's a tie! Try again.")
+        } else if (result === 'win') {
+            playerScore++;
+            console.log("You win, " + playerSelection + " beats " + computerSelection + "! Player: " + playerScore + " Computer: " + computerScore); 
+        } else {
+            computerScore++;
+            console.log("You lose, " + computerSelection + " beats " + playerSelection + ". Player: " + playerScore + " Computer: " + computerScore);
+        }
+    }
+    if (playerScore === 3) {
+        console.log("Congratulations, you defeated the Computer!");
+    } else if (computerScore === 3) {
+        console.log("I'm sorry, the Computer defeated you.");
     }
 }
 
