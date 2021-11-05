@@ -27,6 +27,22 @@ function playRound() {
     }
 }
 
+function playAgain() {
+    let again = prompt("Would you like to play again? 'Yes' or 'no'?")
+    let response = again.toLowerCase();
+        while (response != 'yes' && response != 'no') {
+            alert("Incompatible submission. Please try again.");
+            again = prompt("Would you like to play again? 'Yes' or 'no'?")
+            response = again.toLowerCase();
+        }
+    if (response === 'yes') {
+        game();
+    } else {
+        alert("Thanks for playing Rock, Paper, Scissors!")
+    }
+}
+
+
 function game() {
     let playerScore = 0;
     let computerScore = 0;
@@ -47,6 +63,8 @@ function game() {
     } else if (computerScore === 3) {
         console.log("I'm sorry, the Computer defeated you.");
     }
+    playAgain();
 }
 
 game();
+
