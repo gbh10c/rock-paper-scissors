@@ -7,11 +7,12 @@ function computerPlay() {
 function userPlay() {
     let input = prompt("Type 'rock', 'paper', or 'scissors'.");
     let answer = input.toLowerCase();
-        if (answer != 'rock' && answer != 'paper' && answer != 'scissors') {
-            return prompt("Please enter a valid selection: 'rock', 'paper', or 'scissors'!");
-        } else {
-    return answer;
+        while (answer != 'rock' && answer != 'paper' && answer != 'scissors') {
+            alert("Incompatible submission. Please try again.");
+            input = prompt("Type 'rock', 'paper', or 'scissors'.");
+            answer = input.toLowerCase();
         }
+            return answer;
 }
 
 function playRound() {
